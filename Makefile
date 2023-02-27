@@ -1,2 +1,2 @@
-start:
-	poetry run python manage.py runserver
+dev:
+	python manage.py runserver
