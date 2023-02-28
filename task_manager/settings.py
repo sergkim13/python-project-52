@@ -32,6 +32,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = [
     'webserver',
     '.railway.app',
+    '127.0.0.1',
 ]
 
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'task_manager',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

@@ -1,1 +1,40 @@
-<h1>Привет от Хекслета!</h1>
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% bootstrap_messages %}
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Менеджер задач</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <a href="#" class="navbar-brand">
+            <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" height="70" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a href="{% url 'index' %}" class="nav-link">Менеджер задач</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="#" class="nav-link">Пользователи</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="#" class="nav-link">Вход</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="#" class="nav-link">Регистрация</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1>Привет от Хекслета!</h1>    
+</body>
+</html>
