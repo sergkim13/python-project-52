@@ -1,9 +1,9 @@
-"Constants for Task Manager main application."
+'Constants for Task Manager main application.'
 
-from django.utils.translation import gettext_lazy
-from django.urls import reverse_lazy
 from typing import Final
 
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy
 
 # Route names
 HOME: Final[str] = 'home'
@@ -22,7 +22,8 @@ MSG_LOGIN: str = gettext_lazy('You are logged in')
 MSG_LOGOUT: str = gettext_lazy('You are logged out')
 
 MSG_NO_PERMISSION = gettext_lazy('You are not authorized! Please sign in.')
-MSG_NOT_AUTHOR_FOR_DELETE_TASK = gettext_lazy("A task can only be deleted by its author.")
+MSG_NOT_AUTHOR_FOR_DELETE_TASK = gettext_lazy(
+    'A task can only be deleted by its author.')
 
 
 # Templates
