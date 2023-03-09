@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-07 10:42+0300\n"
+"POT-Creation-Date: 2023-03-08 12:34+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,9 +16,26 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: task_manager/constants.py:21
+msgid "You are logged in"
+msgstr "Вы залогинены"
+
+#: task_manager/constants.py:22
+msgid "You are logged out"
+msgstr "Вы разлогинены"
+
+#: task_manager/constants.py:24
+msgid "You are not authorized! Please sign in."
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
+
+#: task_manager/constants.py:26
+msgid "A task can only be deleted by its author."
+msgstr "Задачу может удалить только её автор."
+
 #: task_manager/templates/index.html:4
 #: task_manager/templates/layouts/navbar.html:13
 msgid "Task manager"
@@ -37,6 +54,7 @@ msgid "Learn more"
 msgstr "Узнать больше"
 
 #: task_manager/templates/layouts/navbar.html:16
+#: task_manager/users/constants.py:40 task_manager/users/constants.py:42
 msgid "Users"
 msgstr "Пользователи"
 
@@ -47,3 +65,122 @@ msgstr "Вход"
 #: task_manager/templates/layouts/navbar.html:24
 msgid "Sign Up"
 msgstr "Регистрация"
+
+#: task_manager/users/constants.py:41
+msgid "List of Task Manager Users."
+msgstr "Список всех пользователей Менеджера задач."
+
+#: task_manager/users/constants.py:44 task_manager/users/constants.py:46
+msgid "Registration"
+msgstr "Регистрация"
+
+#: task_manager/users/constants.py:45
+msgid "User Registration on Task Manager."
+msgstr "Регистрация пользователя в Менеджере задач"
+
+#: task_manager/users/constants.py:48
+msgid "User editing"
+msgstr "Изменение пользователя."
+
+#: task_manager/users/constants.py:49
+msgid "User editing on Task Manager."
+msgstr "Изменение пользователя в Менеджере задач."
+
+#: task_manager/users/constants.py:50
+msgid "User change"
+msgstr "Сменить пользователя."
+
+#: task_manager/users/constants.py:52
+msgid "User deleting"
+msgstr "Удаление пользователя."
+
+#: task_manager/users/constants.py:53
+msgid "User deleting on Task Manager."
+msgstr "Удаление пользователя в Менеджере задач."
+
+#: task_manager/users/constants.py:54
+msgid "Deleting a user"
+msgstr ""
+
+#: task_manager/users/constants.py:58
+msgid "User successfully registered"
+msgstr ""
+
+#: task_manager/users/constants.py:59
+msgid "User successfully updated"
+msgstr ""
+
+#: task_manager/users/constants.py:60
+msgid "User successfully deleted"
+msgstr ""
+
+#: task_manager/users/constants.py:62
+msgid "You do not have permission to modify another user"
+msgstr ""
+
+#: task_manager/users/constants.py:64
+msgid "Cannot delete user because it is in use"
+msgstr ""
+
+#: task_manager/users/constants.py:76
+msgid "First Name"
+msgstr "Имя"
+
+#: task_manager/users/constants.py:77
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: task_manager/users/constants.py:81
+msgid "Required. Please enter your real name."
+msgstr "Обязательное поле. Пожалуйста, введите ваше настоящее имя."
+
+#: task_manager/users/constants.py:83
+msgid "Required. Please enter your real surname."
+msgstr "Обязательное поле. Пожалуйста, введите вашу настоящую фамилию."
+
+#: task_manager/users/constants.py:87
+msgid "Register"
+msgstr "Регистрация"
+
+#: task_manager/users/constants.py:88
+msgid "Change"
+msgstr ""
+
+#: task_manager/users/constants.py:89
+msgid "Yes, delete"
+msgstr ""
+
+#: task_manager/users/templates/users/user_form.html:6
+#: task_manager/users/templates/users/user_list.html:5
+#, fuzzy
+#| msgid "Task manager"
+msgid "Task Manager"
+msgstr "Менеджер задач"
+
+#: task_manager/users/templates/users/user_list.html:14
+#, fuzzy
+#| msgid "Users"
+msgid "Username"
+msgstr "Пользователи"
+
+#: task_manager/users/templates/users/user_list.html:15
+msgid "Full name"
+msgstr ""
+
+#: task_manager/users/templates/users/user_list.html:16
+msgid "Creat at"
+msgstr ""
+
+#: task_manager/users/templates/users/user_list.html:29
+msgid "Update"
+msgstr ""
+
+#: task_manager/users/templates/users/user_list.html:32
+msgid "Delete"
+msgstr ""
+
+#: task_manager/users/templates/users/user_list.html:39
+#, fuzzy
+#| msgid "Users"
+msgid "No users"
+msgstr "Пользователи"
