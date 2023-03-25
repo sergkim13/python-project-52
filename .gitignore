@@ -9,3 +9,5 @@ tempCodeRunnerFile.py
 .mypy_cache/
 *.rdb
 .env
+db.sqlite3
+
