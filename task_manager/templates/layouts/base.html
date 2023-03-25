@@ -2,7 +2,6 @@
 {% load bootstrap4 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
-{% bootstrap_messages %}
 {% get_current_language as LANGUAGE_CODE %}
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}">
@@ -17,6 +16,8 @@
             {% include 'layouts/navbar.html' %}
         </header>
         <div class="container wrapper flex-grow-1">
+            {# Display django.contrib.messages as Bootstrap alerts #}
+            {% bootstrap_messages %}
             {% block content %}{% endblock %}
         </div>
         <footer>
