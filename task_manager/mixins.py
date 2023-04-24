@@ -1,10 +1,11 @@
-from typing import Any, Callable, Union
+from typing import Any, Callable
 
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import ProtectedError
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect
+from django.views.generic import DeleteView
 
 from .constants import MSG_NO_PERMISSION, REVERSE_HOME, REVERSE_LOGIN
 
@@ -34,7 +35,7 @@ class ModifyPermissionMixin(LoginRequiredMixin):
         return super().dispatch(request, *args, **kwargs)
 
 
-class DeletionProtectionMixin:
+class DeletionProtectionMixin(DeleteView):
     '''Sets the rules for handling the case of the impossibility of deleting data
     due to the protection of related data.'''
 

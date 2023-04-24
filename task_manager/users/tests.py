@@ -1,10 +1,20 @@
 from http import HTTPStatus
+
 from django.test import TestCase
 from django.urls import reverse_lazy
+
+from task_manager.users.constants import (
+    DELETE_USER,
+    REVERSE_CREATE,
+    REVERSE_LOGIN,
+    REVERSE_USERS,
+    TEMPLATE_CREATE,
+    TEMPLATE_DELETE,
+    TEMPLATE_LIST,
+    TEMPLATE_UPDATE,
+    UPDATE_USER,
+)
 from task_manager.users.models import User
-from task_manager.users.constants import UPDATE_USER, DELETE_USER, \
-    TEMPLATE_CREATE, TEMPLATE_LIST, TEMPLATE_UPDATE, TEMPLATE_DELETE, \
-    REVERSE_USERS, REVERSE_CREATE, REVERSE_LOGIN
 
 
 class TestUsers(TestCase):
