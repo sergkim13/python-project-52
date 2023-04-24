@@ -1,4 +1,4 @@
-{% extends "components/base.html" %}
+{% extends "layouts/base.html" %}
 
 {% load i18n bootstrap4 %}
 
@@ -11,8 +11,8 @@
             <h1 class="my-4">{{ page_h1 }} {{ user.username }}</h1>
             <form method="post">
                 {% csrf_token %}
-                <p>{% translate "Are you sure you want to delete" %} {{ user.first_name }} {{ user.last_name }}?</p><br>
-                {% bootstrap_button button_text button_type="submit" button_class="btn btn-lg btn-danger" %}
+                <p>{% translate "Are you sure you want to delete" %} {{ user.username }}?</p><br>
+                <input type="submit" class="btn btn-lg btn-danger" value='{% translate "Yes, delete" %}'>
                 <a class="btn btn-lg btn-primary" href="#" onclick="history.go(-1)">{% translate "No, stay and go back!" %}</a>
             </form>
         </div>

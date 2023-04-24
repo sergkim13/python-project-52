@@ -21,7 +21,7 @@ from .constants import (
 from .forms import UserEditingForm, UserRegistrationForm
 from .models import User
 
-# from ..mixins import ModifyPermissionMixin, DeletionProtectionMixin
+from ..mixins import ModifyPermissionMixin, DeletionProtectionMixin
 
 
 class UsersListView(ListView):
@@ -40,7 +40,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     success_message: str = MSG_REGISTERED
 
 
-class UserUpdateView(LoginRequiredMixin,
+class UserUpdateView(ModifyPermissionMixin, LoginRequiredMixin,
                      SuccessMessageMixin, UpdateView):
     '''Change a user.'''
     model: type[User] = User
@@ -52,7 +52,7 @@ class UserUpdateView(LoginRequiredMixin,
     unpermission_message: str = MSG_UNPERMISSION_TO_MODIFY
 
 
-class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class UserDeleteView(DeletionProtectionMixin, LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     '''Delete user.'''
     model: type[User] = User
     context_object_name: str = 'user'

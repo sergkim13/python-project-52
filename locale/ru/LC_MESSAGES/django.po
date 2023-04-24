@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-08 12:34+0300\n"
+"POT-Creation-Date: 2023-03-25 17:57+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,13 +58,42 @@ msgstr "Узнать больше"
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/layouts/navbar.html:21
+#: task_manager/templates/layouts/navbar.html:25
+msgid "Logout"
+msgstr "Выход"
+
+#: task_manager/templates/layouts/navbar.html:29
 msgid "Log In"
 msgstr "Вход"
 
-#: task_manager/templates/layouts/navbar.html:24
+#: task_manager/templates/layouts/navbar.html:32
 msgid "Sign Up"
 msgstr "Регистрация"
+
+#: task_manager/templates/registration/login.html:5
+#, fuzzy
+#| msgid "User editing on Task Manager."
+msgid "Log in into Task Manager."
+msgstr "Войти в Менеджер задач."
+
+#: task_manager/templates/registration/login.html:6
+#: task_manager/templates/registration/login.html:9
+msgid "Login"
+msgstr "Вход"
+
+#: task_manager/templates/registration/login.html:6
+#: task_manager/users/templates/users/user_confirm_delete.html:6
+#: task_manager/users/templates/users/user_form.html:6
+#: task_manager/users/templates/users/user_list.html:5
+#, fuzzy
+#| msgid "Task manager"
+msgid "Task Manager"
+msgstr "Менеджер задач"
+
+#: task_manager/templates/registration/login.html:13
+msgctxt "Login button"
+msgid "Login"
+msgstr "Войти"
 
 #: task_manager/users/constants.py:41
 msgid "List of Task Manager Users."
@@ -88,7 +117,7 @@ msgstr "Изменение пользователя в Менеджере зад
 
 #: task_manager/users/constants.py:50
 msgid "User change"
-msgstr "Сменить пользователя."
+msgstr "Редактирование пользователя."
 
 #: task_manager/users/constants.py:52
 msgid "User deleting"
@@ -100,27 +129,27 @@ msgstr "Удаление пользователя в Менеджере зада
 
 #: task_manager/users/constants.py:54
 msgid "Deleting a user"
-msgstr ""
+msgstr "Удаление пользователя"
 
 #: task_manager/users/constants.py:58
 msgid "User successfully registered"
-msgstr ""
+msgstr "Пользователь успешно зарегистрирован."
 
 #: task_manager/users/constants.py:59
 msgid "User successfully updated"
-msgstr ""
+msgstr "Пользователь успешно изменен."
 
 #: task_manager/users/constants.py:60
 msgid "User successfully deleted"
-msgstr ""
+msgstr "Пользователь успешно удален."
 
 #: task_manager/users/constants.py:62
 msgid "You do not have permission to modify another user"
-msgstr ""
+msgstr "У вас нет прав на редактирование данного пользователя."
 
 #: task_manager/users/constants.py:64
 msgid "Cannot delete user because it is in use"
-msgstr ""
+msgstr "Невозможно удалить активного пользователя"
 
 #: task_manager/users/constants.py:76
 msgid "First Name"
@@ -143,19 +172,26 @@ msgid "Register"
 msgstr "Регистрация"
 
 #: task_manager/users/constants.py:88
-msgid "Change"
-msgstr ""
+#, fuzzy
+#| msgid "User change"
+msgid "Save changes"
+msgstr "Сохранить изменения"
 
 #: task_manager/users/constants.py:89
 msgid "Yes, delete"
-msgstr ""
+msgstr "Да, удалить"
 
-#: task_manager/users/templates/users/user_form.html:6
-#: task_manager/users/templates/users/user_list.html:5
-#, fuzzy
-#| msgid "Task manager"
-msgid "Task Manager"
-msgstr "Менеджер задач"
+#: task_manager/users/templates/users/user_confirm_delete.html:14
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить пользователя"
+
+#: task_manager/users/templates/users/user_confirm_delete.html:15
+msgid "Yes, confirm"
+msgstr "Да, подтверждаю"
+
+#: task_manager/users/templates/users/user_confirm_delete.html:16
+msgid "No, stay and go back!"
+msgstr "Нет, вернуться назад"
 
 #: task_manager/users/templates/users/user_list.html:14
 #, fuzzy
@@ -165,22 +201,22 @@ msgstr "Пользователи"
 
 #: task_manager/users/templates/users/user_list.html:15
 msgid "Full name"
-msgstr ""
+msgstr "Полное имя"
 
 #: task_manager/users/templates/users/user_list.html:16
 msgid "Creat at"
-msgstr ""
+msgstr "Дата регистрации"
 
 #: task_manager/users/templates/users/user_list.html:29
 msgid "Update"
-msgstr ""
+msgstr "Редактировать"
 
 #: task_manager/users/templates/users/user_list.html:32
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: task_manager/users/templates/users/user_list.html:39
 #, fuzzy
 #| msgid "Users"
 msgid "No users"
-msgstr "Пользователи"
+msgstr "Пользователи не найдены"

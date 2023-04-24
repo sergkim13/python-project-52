@@ -85,7 +85,7 @@ LAST_NAME_HELP_TEXT: str = gettext_lazy(
 
 # Buttons
 REGISTER_BUTTON: str = gettext_lazy('Register')
-UPDATE_BUTTON: str = gettext_lazy('Change')
+UPDATE_BUTTON: str = gettext_lazy('Save changes')
 DELETE_BUTTON: str = gettext_lazy('Yes, delete')
 
 
