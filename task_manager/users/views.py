@@ -5,6 +5,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.forms import BaseForm
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
+from ..mixins import DeletionProtectionMixin, ModifyPermissionMixin
 from .constants import (
     CONTEXT_CREATE,
     CONTEXT_DELETE,
@@ -20,8 +21,6 @@ from .constants import (
 )
 from .forms import UserEditingForm, UserRegistrationForm
 from .models import User
-
-from ..mixins import ModifyPermissionMixin, DeletionProtectionMixin
 
 
 class UsersListView(ListView):

@@ -1,11 +1,12 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib import messages
-from django.shortcuts import redirect
-from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
-from django.db.models import ProtectedError
-from typing import Any, Union, Callable
+from typing import Any, Callable, Union
 
-from .constants import MSG_NO_PERMISSION, REVERSE_LOGIN, REVERSE_HOME
+from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import ProtectedError
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect
+
+from .constants import MSG_NO_PERMISSION, REVERSE_HOME, REVERSE_LOGIN
 
 
 class AuthorizationPermissionMixin(LoginRequiredMixin):
@@ -21,7 +22,7 @@ class ModifyPermissionMixin(LoginRequiredMixin):
     '''Sets access rules for an unauthenticated user.'''
 
     unpermission_message: str = 'Access denied message'
-    unpermission_url: Union[str, Callable[..., Any]] = REVERSE_LOGIN
+    unpermission_url: str | Callable[..., Any] = REVERSE_LOGIN
 
     def dispatch(self, request: HttpRequest,
                  *args: Any, **kwargs: Any) -> HttpResponse:
@@ -38,7 +39,7 @@ class DeletionProtectionMixin:
     due to the protection of related data.'''
 
     protected_data_message: str = 'Entity deletion forbidden message'
-    protected_data_url: Union[str, Callable[..., Any]] = REVERSE_HOME
+    protected_data_url: str | Callable[..., Any] = REVERSE_HOME
 
     def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
         '''Sends data to the server with protection check.'''

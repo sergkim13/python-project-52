@@ -143,3 +143,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOCALE_PATHS = (
     './locale/',
 )
+
+FIXTURE_DIRS = ('task_manager/fixtures/',)
