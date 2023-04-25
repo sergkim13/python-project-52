@@ -5,7 +5,6 @@ from typing import Final
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy
 
-from task_manager.constants import MSG_NO_PERMISSION, REVERSE_LOGIN  # noqa: F401
 
 # Route names
 LIST_STATUSES: Final[str] = 'statuses'
