@@ -17,7 +17,6 @@ DELETE_USER: Final[str] = 'user_delete'
 # Reverses
 REVERSE_USERS: Final = reverse_lazy(LIST_USERS)
 REVERSE_CREATE: Final = reverse_lazy(CREATE_USER)
-REVERSE_LOGIN: Final = reverse_lazy(LOGIN)
 
 
 # Templates

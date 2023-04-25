@@ -14,10 +14,10 @@ from .constants import (
     MSG_REGISTERED,
     MSG_UNPERMISSION_TO_MODIFY,
     MSG_UPDATED,
-    REVERSE_LOGIN,
     REVERSE_USERS,
     USER_USED_IN_TASK,
 )
+from task_manager.constants import REVERSE_LOGIN
 from .forms import UserForm
 from .models import User
 

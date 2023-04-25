@@ -6,7 +6,6 @@ from django.urls import reverse_lazy
 from task_manager.users.constants import (
     DELETE_USER,
     REVERSE_CREATE,
-    REVERSE_LOGIN,
     REVERSE_USERS,
     TEMPLATE_CREATE,
     TEMPLATE_DELETE,
@@ -14,6 +13,7 @@ from task_manager.users.constants import (
     TEMPLATE_UPDATE,
     UPDATE_USER,
 )
+from task_manager.constants import REVERSE_LOGIN
 from task_manager.users.models import User
 
 
