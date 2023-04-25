@@ -119,8 +119,7 @@ class TestTask(TestCase):
 
         # GET response check without login
         response = self.client.get(URL_PATH)
-        self.assertEqual(response.status_code, HTTPStatus.FOUND)
-        self.assertRedirects(response, REVERSE_LOGIN)
+        self.assertRedirects(response, REVERSE_LOGIN, HTTPStatus.FOUND)
 
         # GET response check with login
         self.client.force_login(self.fixture_user)
@@ -131,8 +130,7 @@ class TestTask(TestCase):
         # POST response check
         response = self.client.post(URL_PATH, data=self.update_task_data)
         updated_task = Task.objects.get(id=1)
-        self.assertEqual(response.status_code, HTTPStatus.FOUND)
-        self.assertRedirects(response, REVERSE_TASKS)
+        self.assertRedirects(response, REVERSE_TASKS, HTTPStatus.FOUND)
         self.assertEqual(updated_task.name, self.update_task_data['name'])
         self.assertEqual(updated_task.description, self.update_task_data['description'])
         self.assertEqual(updated_task.status.id, self.update_task_data['status'])

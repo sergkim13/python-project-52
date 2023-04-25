@@ -75,8 +75,7 @@ class TestStatus(TestCase):
 
         # GET response check without login
         response = self.client.get(URL_PATH)
-        self.assertEqual(response.status_code, HTTPStatus.FOUND)
-        self.assertRedirects(response, REVERSE_LOGIN)
+        self.assertRedirects(response, REVERSE_LOGIN, HTTPStatus.FOUND)
 
         # GET response check with login
         self.client.force_login(self.fixture_user)
@@ -97,8 +96,7 @@ class TestStatus(TestCase):
 
         # GET response check without login
         response = self.client.get(URL_PATH)
-        self.assertEqual(response.status_code, HTTPStatus.FOUND)
-        self.assertRedirects(response, REVERSE_LOGIN)
+        self.assertRedirects(response, REVERSE_LOGIN, HTTPStatus.FOUND)
 
         # GET response check with login
         self.client.force_login(self.fixture_user)
@@ -108,7 +106,6 @@ class TestStatus(TestCase):
 
         # POST response check
         post_response = self.client.post(URL_PATH)
-        self.assertEqual(post_response.status_code, HTTPStatus.FOUND)
-        self.assertRedirects(post_response, REVERSE_STATUSES)
+        self.assertRedirects(post_response, REVERSE_STATUSES, HTTPStatus.FOUND)
         with self.assertRaises(Status.DoesNotExist):
             Status.objects.get(id=self.fixture_status_1.id)

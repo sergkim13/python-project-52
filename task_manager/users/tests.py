@@ -17,7 +17,7 @@ from task_manager.users.constants import (
 from task_manager.users.models import User
 
 
-class TestUsers(TestCase):
+class TestUser(TestCase):
     '''`User` CRUD test cases.'''
     fixtures = ['users.json']
 
@@ -89,8 +89,7 @@ class TestUsers(TestCase):
 
         # Valid POST response check
         response = self.client.post(REVERSE_CREATE, data=self.valid_user_data)
-        self.assertEqual(response.status_code, HTTPStatus.FOUND)
-        self.assertRedirects(response, REVERSE_LOGIN)
+        self.assertRedirects(response, REVERSE_LOGIN, HTTPStatus.FOUND)
         self.assertTrue(User.objects.filter(username='john_kras').exists())
 
         # Invalid POST reponse check: username contains space
@@ -127,8 +126,7 @@ class TestUsers(TestCase):
 
         # GET response check without login
         response = self.client.get(URL_PATH)
-        self.assertEqual(response.status_code, HTTPStatus.FOUND)
-        self.assertRedirects(response, REVERSE_LOGIN)
+        self.assertRedirects(response, REVERSE_LOGIN, HTTPStatus.FOUND)
 
         # GET response check with login
         self.client.force_login(self.fixture_user_1)
@@ -139,11 +137,23 @@ class TestUsers(TestCase):
         # POST response check
         response = self.client.post(URL_PATH, data=self.update_user_data)
         updated_user = User.objects.get(id=1)
-        self.assertEqual(response.status_code, HTTPStatus.FOUND)
-        self.assertRedirects(response, REVERSE_USERS)
+        self.assertRedirects(response, REVERSE_USERS, HTTPStatus.FOUND)
         self.assertEqual(updated_user.username, self.update_user_data['username'])
         self.assertEqual(updated_user.first_name, self.update_user_data['first_name'])
         self.assertEqual(updated_user.last_name, self.update_user_data['last_name'])
+
+    def test_user_update_not_self(self):
+        '''Tests for user's update other user.'''
+        URL_PATH = reverse_lazy(UPDATE_USER, kwargs={'pk': self.fixture_user_2.id})
+
+        # GET response check
+        self.client.force_login(self.fixture_user_1)
+        response = self.client.get(URL_PATH)
+        self.assertRedirects(response, REVERSE_USERS, HTTPStatus.FOUND)
+
+        # POST response check
+        response = self.client.post(URL_PATH)
+        self.assertRedirects(response, REVERSE_USERS, HTTPStatus.FOUND)
 
     def test_user_delete(self):
         '''Tests for users's delete.'''
@@ -161,3 +171,16 @@ class TestUsers(TestCase):
         self.assertRedirects(response, REVERSE_USERS)
         with self.assertRaises(User.DoesNotExist):
             User.objects.get(id=self.fixture_user_1.id)
+
+    def test_user_delete_not_self(self):
+        '''Tests for user's delete other user.'''
+        URL_PATH = reverse_lazy(DELETE_USER, kwargs={'pk': self.fixture_user_2.id})
+
+        # GET response check
+        self.client.force_login(self.fixture_user_1)
+        response = self.client.get(URL_PATH)
+        self.assertRedirects(response, REVERSE_USERS, HTTPStatus.FOUND)
+
+        # POST response check
+        response = self.client.post(URL_PATH)
+        self.assertRedirects(response, REVERSE_USERS, HTTPStatus.FOUND)

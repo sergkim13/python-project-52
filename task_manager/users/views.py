@@ -51,8 +51,8 @@ class UserUpdateView(AuthRequiredMixin, UserPermissionMixin,
     unpermission_message: str = MSG_UNPERMISSION_TO_MODIFY
 
 
-class UserDeleteView(AuthRequiredMixin, DeletionProtectionMixin,
-                     UserPermissionMixin, SuccessMessageMixin):
+class UserDeleteView(AuthRequiredMixin, UserPermissionMixin,
+                     DeletionProtectionMixin, SuccessMessageMixin):
     '''Delete user.'''
     model: type[User] = User
     context_object_name: str = 'user'
