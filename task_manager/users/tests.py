@@ -1,5 +1,6 @@
 from http import HTTPStatus
 
+from django.contrib.messages import get_messages
 from django.test import TestCase
 from django.urls import reverse_lazy
 
@@ -13,6 +14,7 @@ from task_manager.users.constants import (
     TEMPLATE_LIST,
     TEMPLATE_UPDATE,
     UPDATE_USER,
+    USER_USED_IN_TASK,
 )
 from task_manager.users.models import User
 
@@ -184,3 +186,21 @@ class TestUser(TestCase):
         # POST response check
         response = self.client.post(URL_PATH)
         self.assertRedirects(response, REVERSE_USERS, HTTPStatus.FOUND)
+
+
+class TestUserRelations(TestCase):
+    '''`User` test cases with related `Task`'''
+    fixtures = ['users.json', 'statuses.json', 'tasks.json']
+
+    def setUp(self):
+        '''Fixtures setup for tests.'''
+        self.fixture_user = User.objects.get(id=1)
+
+    def test_status_with_task_delete(self):
+        '''Tests for users's delete which assigned as executor in task.'''
+        URL_PATH = reverse_lazy(DELETE_USER, kwargs={'pk': self.fixture_user.id})
+        self.client.force_login(self.fixture_user)
+        response = self.client.post(URL_PATH)
+        messages = list(get_messages(response.wsgi_request))
+        self.assertRedirects(response, REVERSE_USERS, HTTPStatus.FOUND)
+        self.assertEqual(str(messages[0]), USER_USED_IN_TASK)

@@ -1,8 +1,9 @@
 from http import HTTPStatus
 
+from django.contrib.messages import get_messages
 from django.test import TestCase
 from django.urls import reverse_lazy
-from django.contrib.messages import get_messages
+
 from task_manager.constants import REVERSE_LOGIN
 from task_manager.statuses.constants import (
     DELETE_STATUS,
