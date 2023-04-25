@@ -33,12 +33,12 @@ class StatusUpdateView(AuthentificationPermissionMixin, SuccessMessageMixin, Upd
     success_message: str = MSG_UPDATED
 
 
-class StatusDeleteView(DeletionProtectionMixin, AuthentificationPermissionMixin, SuccessMessageMixin, DeleteView):
+class StatusDeleteView(AuthentificationPermissionMixin, DeletionProtectionMixin, SuccessMessageMixin, DeleteView):
     '''Delete status.'''
     model: type[Status] = Status
     context_object_name: str = 'status'
     extra_content: dict = CONTEXT_DELETE
-    success_url: str | Callable[..., Any] = MSG_UPDATED
+    success_url: str | Callable[..., Any] = REVERSE_STATUSES
     success_message: str = MSG_DELETED
     protected_data_url: str | Callable[..., Any] = REVERSE_STATUSES
     protected_data_message: str = STATUS_USED_IN_TASK

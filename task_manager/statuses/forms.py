@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import BaseForm
+from django.forms import ModelForm
 
 from .constants import (
     STATUS_NAME,
@@ -10,7 +10,7 @@ from .constants import (
 from .models import Status
 
 
-class StatusForm(BaseForm):
+class StatusForm(ModelForm):
     name = forms.CharField(required=True, label=STATUS_NAME, help_text=STATUS_NAME_HELP_TEXT)
 
     class Meta:
