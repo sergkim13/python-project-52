@@ -23,7 +23,7 @@ from .forms import UserEditingForm, UserRegistrationForm
 from .models import User
 
 
-class UsersListView(ListView):
+class UserListView(ListView):
     '''Show the list of users.'''
     model: type[User] = User
     context_object_name: str = 'users'
@@ -31,7 +31,7 @@ class UsersListView(ListView):
 
 
 class UserCreateView(SuccessMessageMixin, CreateView):
-    '''Create a user.'''
+    '''Create user.'''
     model: type[User] = User
     extra_context: dict = CONTEXT_CREATE
     form_class: type[BaseForm] = UserRegistrationForm
@@ -39,9 +39,8 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     success_message: str = MSG_REGISTERED
 
 
-class UserUpdateView(ModifyPermissionMixin, LoginRequiredMixin,
-                     SuccessMessageMixin, UpdateView):
-    '''Change a user.'''
+class UserUpdateView(ModifyPermissionMixin, SuccessMessageMixin, UpdateView):
+    '''Update user.'''
     model: type[User] = User
     extra_context: dict = CONTEXT_UPDATE
     form_class: type[BaseForm] = UserEditingForm
@@ -51,7 +50,7 @@ class UserUpdateView(ModifyPermissionMixin, LoginRequiredMixin,
     unpermission_message: str = MSG_UNPERMISSION_TO_MODIFY
 
 
-class UserDeleteView(DeletionProtectionMixin, LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class UserDeleteView(DeletionProtectionMixin, ModifyPermissionMixin, SuccessMessageMixin, DeleteView):
     '''Delete user.'''
     model: type[User] = User
     context_object_name: str = 'user'

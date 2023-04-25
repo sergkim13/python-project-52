@@ -10,8 +10,8 @@ from django.views.generic import DeleteView
 from .constants import MSG_NO_PERMISSION, REVERSE_HOME, REVERSE_LOGIN
 
 
-class AuthorizationPermissionMixin(LoginRequiredMixin):
-    '''Sets access rules for unauthorized users.'''
+class AuthentificationPermissionMixin(LoginRequiredMixin):
+    '''Sets access rules for unauthenticated users.'''
 
     def handle_no_permission(self) -> HttpResponseRedirect:
         '''Sets rules when a page is unavailable to an unauthorized user.'''
@@ -20,7 +20,7 @@ class AuthorizationPermissionMixin(LoginRequiredMixin):
 
 
 class ModifyPermissionMixin(LoginRequiredMixin):
-    '''Sets access rules for an unauthenticated user.'''
+    '''Sets access rules for an unauthorized user.'''
 
     unpermission_message: str = 'Access denied message'
     unpermission_url: str | Callable[..., Any] = REVERSE_LOGIN

@@ -58,10 +58,8 @@ DELETE_H1: str = gettext_lazy('Deleting a user')
 MSG_REGISTERED: str = gettext_lazy('User successfully registered')
 MSG_UPDATED: str = gettext_lazy('User successfully updated')
 MSG_DELETED: str = gettext_lazy('User successfully deleted')
-MSG_UNPERMISSION_TO_MODIFY: str = gettext_lazy(
-    'You do not have permission to modify another user')
-USER_USED_IN_TASK: str = gettext_lazy(
-    'Cannot delete user because it is in use')
+MSG_UNPERMISSION_TO_MODIFY: str = gettext_lazy('You do not have permission to modify another user')
+USER_USED_IN_TASK: str = gettext_lazy('Cannot delete user because it is in use')
 
 
 # Forms
