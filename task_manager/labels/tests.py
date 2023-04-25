@@ -7,9 +7,9 @@ from django.urls import reverse_lazy
 from task_manager.constants import REVERSE_LOGIN
 from task_manager.labels.constants import (
     DELETE_LABEL,
+    LABEL_USED_IN_TASK,
     REVERSE_CREATE,
     REVERSE_LABELS,
-    LABEL_USED_IN_TASK,
     TEMPLATE_CREATE,
     TEMPLATE_DELETE,
     TEMPLATE_LIST,
@@ -123,7 +123,7 @@ class TestLabelRelations(TestCase):
         self.fixture_user = User.objects.get(id=1)
         self.fixture_label_1 = Label.objects.get(id=1)
         fixture_task = Task.objects.get(id=1)
-        fixture_task.labels.add(self.fixture_label_1)  
+        fixture_task.labels.add(self.fixture_label_1)
 
     def test_label_with_task_delete(self):
         '''Tests for label's delete which used in task.'''

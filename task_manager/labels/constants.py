@@ -1,9 +1,9 @@
-"Constants for Labels application."
+'Constants for Labels application.'
 
-from django.utils.translation import gettext_lazy
+from typing import Final
+
 from django.urls import reverse_lazy
-from typing import Dict, Final
-
+from django.utils.translation import gettext_lazy
 
 # Route names
 LIST_LABELS: Final[str] = 'labels'
@@ -70,24 +70,24 @@ DELETE_BUTTON: str = gettext_lazy('Yes, delete')
 
 
 # Contexts
-CONTEXT_LIST: Dict = {
+CONTEXT_LIST: dict = {
     PAGE_TITLE: LIST_TITLE,
     PAGE_DESCRIPTION: LIST_DESCRIPTION,
     PAGE_H1: LIST_H1
 }
-CONTEXT_CREATE: Dict = {
+CONTEXT_CREATE: dict = {
     PAGE_TITLE: CREATE_TITLE,
     PAGE_DESCRIPTION: CREATE_DESCRIPTION,
     PAGE_H1: CREATE_H1,
     BUTTON_TEXT: CREATION_BUTTON
 }
-CONTEXT_UPDATE: Dict = {
+CONTEXT_UPDATE: dict = {
     PAGE_TITLE: UPDATE_TITLE,
     PAGE_DESCRIPTION: UPDATE_DESCRIPTION,
     PAGE_H1: UPDATE_H1,
     BUTTON_TEXT: UPDATE_BUTTON
 }
-CONTEXT_DELETE: Dict = {
+CONTEXT_DELETE: dict = {
     PAGE_TITLE: DELETE_TITLE,
     PAGE_DESCRIPTION: DELETE_DESCRIPTION,
     PAGE_H1: DELETE_H1,

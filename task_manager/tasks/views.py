@@ -2,12 +2,8 @@ from typing import Any, Callable
 
 from django.contrib.messages.views import SuccessMessageMixin
 from django.forms import BaseForm
-from django.views.generic import (
-    CreateView,
-    DeleteView,
-    DetailView,
-    UpdateView,
-)
+from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
+from django_filters.views import FilterView
 
 from task_manager.tasks.filters import TasksFilter
 
@@ -26,7 +22,6 @@ from .constants import (
 )
 from .forms import TaskForm
 from .models import Task
-from django_filters.views import FilterView
 
 
 class TaskDetailView(AuthRequiredMixin, DetailView):
