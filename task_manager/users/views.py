@@ -19,7 +19,7 @@ from .constants import (
     REVERSE_USERS,
     USER_USED_IN_TASK,
 )
-from .forms import UserEditingForm, UserRegistrationForm
+from .forms import UserForm
 from .models import User
 
 
@@ -34,7 +34,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     '''Create user.'''
     model: type[User] = User
     extra_context: dict = CONTEXT_CREATE
-    form_class: type[BaseForm] = UserRegistrationForm
+    form_class: type[BaseForm] = UserForm
     success_url: str | Callable[..., Any] = REVERSE_LOGIN
     success_message: str = MSG_REGISTERED
 
@@ -43,7 +43,7 @@ class UserUpdateView(ModifyPermissionMixin, SuccessMessageMixin, UpdateView):
     '''Update user.'''
     model: type[User] = User
     extra_context: dict = CONTEXT_UPDATE
-    form_class: type[BaseForm] = UserEditingForm
+    form_class: type[BaseForm] = UserForm
     success_url: str | Callable[..., Any] = REVERSE_USERS
     success_message: str = MSG_UPDATED
     unpermission_url: str | Callable[..., Any] = REVERSE_USERS

@@ -67,13 +67,11 @@ USER_USED_IN_TASK: str = gettext_lazy('Cannot delete user because it is in use')
 USERNAME: Final[str] = 'username'
 FIRST_NAME: Final[str] = 'first_name'
 LAST_NAME: Final[str] = 'last_name'
-EMAIL: Final[str] = 'email'
 PASSWORD1: Final[str] = 'password1'
 PASSWORD2: Final[str] = 'password2'
 # Labels
 FIRST_NAME_LABEL: str = gettext_lazy('First Name')
 LAST_NAME_LABEL: str = gettext_lazy('Last Name')
-EMAIL_LABEL: str = 'Email'
 # Help texts
 FIRST_NAME_HELP_TEXT: str = gettext_lazy(
     'Required. Please enter your real name.')
