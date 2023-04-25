@@ -2,9 +2,9 @@ from typing import Any, Callable
 
 from django.contrib.messages.views import SuccessMessageMixin
 from django.forms import BaseForm
-from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+from django.views.generic import CreateView, ListView, UpdateView
 
-from ..mixins import AuthentificationPermissionMixin, DeletionProtectionMixin
+from ..mixins import AuthRequiredMixin, DeletionProtectionMixin
 from .constants import (
     CONTEXT_CREATE,
     CONTEXT_DELETE,
@@ -20,14 +20,14 @@ from .forms import StatusForm
 from .models import Status
 
 
-class StatusListView(AuthentificationPermissionMixin, ListView):
+class StatusListView(AuthRequiredMixin, ListView):
     '''Show the list of statuses.'''
     model: type[Status] = Status
     context_object_name: str = 'statuses'
     extra_context: dict = CONTEXT_LIST
 
 
-class StatusCreateView(AuthentificationPermissionMixin, SuccessMessageMixin, CreateView):
+class StatusCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
     '''Create status.'''
     model: type[Status] = Status
     extra_context: dict = CONTEXT_CREATE
@@ -36,7 +36,7 @@ class StatusCreateView(AuthentificationPermissionMixin, SuccessMessageMixin, Cre
     success_message: str = MSG_CREATED
 
 
-class StatusUpdateView(AuthentificationPermissionMixin, SuccessMessageMixin, UpdateView):
+class StatusUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
     '''Update status.'''
     model: type[Status] = Status
     extra_context: dict = CONTEXT_UPDATE
@@ -45,7 +45,7 @@ class StatusUpdateView(AuthentificationPermissionMixin, SuccessMessageMixin, Upd
     success_message: str = MSG_UPDATED
 
 
-class StatusDeleteView(AuthentificationPermissionMixin, DeletionProtectionMixin, SuccessMessageMixin, DeleteView):
+class StatusDeleteView(AuthRequiredMixin, DeletionProtectionMixin, SuccessMessageMixin):
     '''Delete status.'''
     model: type[Status] = Status
     context_object_name: str = 'status'

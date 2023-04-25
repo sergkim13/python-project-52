@@ -128,7 +128,7 @@ class TestUsers(TestCase):
         # GET response check without login
         response = self.client.get(URL_PATH)
         self.assertEqual(response.status_code, HTTPStatus.FOUND)
-        self.assertRedirects(response, reverse_lazy('users'))
+        self.assertRedirects(response, REVERSE_LOGIN)
 
         # GET response check with login
         self.client.force_login(self.fixture_user_1)

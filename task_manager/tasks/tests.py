@@ -5,13 +5,13 @@ from django.urls import reverse_lazy
 
 from task_manager.constants import REVERSE_LOGIN
 from task_manager.tasks.constants import (
-    DETAIL_TASK,
     DELETE_TASK,
+    DETAIL_TASK,
     REVERSE_CREATE,
     REVERSE_TASKS,
     TEMPLATE_CREATE,
-    TEMPLATE_DETAIL,
     TEMPLATE_DELETE,
+    TEMPLATE_DETAIL,
     TEMPLATE_LIST,
     TEMPLATE_UPDATE,
     UPDATE_TASK,
@@ -31,28 +31,28 @@ class TestTask(TestCase):
         self.fixture_task_2 = Task.objects.get(id=2)
         self.fixture_task_3 = Task.objects.get(id=3)
         self.valid_task_data = {
-            "name": "Buy a milk",
-            "status": 1,
-            "description": "Buy a mlik 3,5%.",
-            "executor": 1,
+            'name': 'Buy a milk',
+            'status': 1,
+            'description': 'Buy a mlik 3,5%.',
+            'executor': 1,
         }
         self.invalid_task_data_1 = {
-            "name": "",  # empty name
-            "status": 1,
-            "description": "Some description.",
-            "executor": 1,
+            'name': '',  # empty name
+            'status': 1,
+            'description': 'Some description.',
+            'executor': 1,
         }
         self.invalid_task_data_2 = {
-            "name": "Some name",
-            "status": '',   # empty status
-            "description": "Some description.",
-            "executor": 1,
+            'name': 'Some name',
+            'status': '',   # empty status
+            'description': 'Some description.',
+            'executor': 1,
         }
         self.update_task_data = {
-            "name": "Some updated name",
-            "status": 1,
-            "description": "Some description.",
-            "executor": 1,
+            'name': 'Some updated name',
+            'status': 1,
+            'description': 'Some description.',
+            'executor': 1,
         }
 
     def test_task_detail(self):
@@ -144,20 +144,33 @@ class TestTask(TestCase):
 
         # GET response check without login
         response = self.client.get(URL_PATH)
-        print('AAAAA', response)
-        self.assertEqual(response.status_code, HTTPStatus.FOUND)
-        self.assertRedirects(response, REVERSE_LOGIN)
-
+        self.assertRedirects(response, REVERSE_LOGIN, HTTPStatus.FOUND)
 
         # GET response check with login
-        # self.client.force_login(self.fixture_user)
-        # response = self.client.get(URL_PATH)
-        # self.assertEqual(response.status_code, HTTPStatus.OK)
-        # self.assertTemplateUsed(response, TEMPLATE_DELETE)
+        self.client.force_login(self.fixture_user)
+        response = self.client.get(URL_PATH)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertTemplateUsed(response, TEMPLATE_DELETE)
 
-        # # POST response check
-        # response = self.client.post(URL_PATH)
-        # self.assertEqual(response.status_code, HTTPStatus.FOUND)
-        # self.assertRedirects(response, REVERSE_TASKS)
-        # with self.assertRaises(Task.DoesNotExist):
-        #     Task.objects.get(id=self.fixture_task_1.id)
+        # POST response check
+        response = self.client.post(URL_PATH)
+        self.assertRedirects(response, REVERSE_TASKS, HTTPStatus.FOUND)
+        with self.assertRaises(Task.DoesNotExist):
+            Task.objects.get(id=self.fixture_task_1.id)
+
+    def test_task_delete_another_user_task(self):
+        '''Tests for task's delete.'''
+        URL_PATH = reverse_lazy(DELETE_TASK, kwargs={'pk': self.fixture_task_2.id})
+
+        # GET response check without login
+        response = self.client.get(URL_PATH)
+        self.assertRedirects(response, REVERSE_LOGIN, HTTPStatus.FOUND)
+
+        # GET response check with login
+        self.client.force_login(self.fixture_user)
+        response = self.client.get(URL_PATH)
+        self.assertRedirects(response, REVERSE_TASKS, HTTPStatus.FOUND)
+
+        # POST response check
+        response = self.client.post(URL_PATH)
+        self.assertRedirects(response, REVERSE_TASKS, HTTPStatus.FOUND)

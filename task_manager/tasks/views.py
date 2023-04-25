@@ -10,7 +10,7 @@ from django.views.generic import (
     UpdateView,
 )
 
-from ..mixins import AuthentificationPermissionMixin, TaskDeletionPermissionMixin
+from ..mixins import AuthorDeletionPermissionMixin, AuthRequiredMixin
 from .constants import (
     CONTEXT_CREATE,
     CONTEXT_DELETE,
@@ -27,20 +27,20 @@ from .forms import TaskForm
 from .models import Task
 
 
-class TaskDetailView(AuthentificationPermissionMixin, DetailView):
+class TaskDetailView(AuthRequiredMixin, DetailView):
     '''Show info about specific task.'''
     model: type[Task] = Task
     extra_context: dict = CONTEXT_DETAIL
 
 
-class TaskListView(AuthentificationPermissionMixin, ListView):
+class TaskListView(AuthRequiredMixin, ListView):
     '''Show the list of tasks.'''
     model: type[Task] = Task
     context_object_name: str = 'tasks'
     extra_context: dict = CONTEXT_LIST
 
 
-class TaskCreateView(AuthentificationPermissionMixin, SuccessMessageMixin, CreateView):
+class TaskCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
     '''Create task.'''
     model: type[Task] = Task
     extra_context: dict = CONTEXT_CREATE
@@ -54,7 +54,7 @@ class TaskCreateView(AuthentificationPermissionMixin, SuccessMessageMixin, Creat
         return super().form_valid(form)
 
 
-class TaskUpdateView(AuthentificationPermissionMixin, SuccessMessageMixin, UpdateView):
+class TaskUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
     '''Update task.'''
     model: type[Task] = Task
     extra_context: dict = CONTEXT_UPDATE
@@ -63,7 +63,7 @@ class TaskUpdateView(AuthentificationPermissionMixin, SuccessMessageMixin, Updat
     success_message: str = MSG_UPDATED
 
 
-class TaskDeleteView(AuthentificationPermissionMixin, TaskDeletionPermissionMixin, SuccessMessageMixin, DeleteView):
+class TaskDeleteView(AuthRequiredMixin, AuthorDeletionPermissionMixin, SuccessMessageMixin, DeleteView):
     '''Delete tasks.'''
     model: type[Task] = Task
     context_object_name: str = 'task'

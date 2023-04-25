@@ -2,11 +2,11 @@ from typing import Any, Callable
 
 from django.contrib.messages.views import SuccessMessageMixin
 from django.forms import BaseForm
-from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+from django.views.generic import CreateView, ListView, UpdateView
 
 from task_manager.constants import REVERSE_LOGIN
 
-from ..mixins import DeletionProtectionMixin, ModifyPermissionMixin
+from ..mixins import AuthRequiredMixin, DeletionProtectionMixin, UserPermissionMixin
 from .constants import (
     CONTEXT_CREATE,
     CONTEXT_DELETE,
@@ -39,7 +39,8 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     success_message: str = MSG_REGISTERED
 
 
-class UserUpdateView(ModifyPermissionMixin, SuccessMessageMixin, UpdateView):
+class UserUpdateView(AuthRequiredMixin, UserPermissionMixin,
+                     SuccessMessageMixin, UpdateView):
     '''Update user.'''
     model: type[User] = User
     extra_context: dict = CONTEXT_UPDATE
@@ -50,7 +51,8 @@ class UserUpdateView(ModifyPermissionMixin, SuccessMessageMixin, UpdateView):
     unpermission_message: str = MSG_UNPERMISSION_TO_MODIFY
 
 
-class UserDeleteView(DeletionProtectionMixin, ModifyPermissionMixin, SuccessMessageMixin, DeleteView):
+class UserDeleteView(AuthRequiredMixin, DeletionProtectionMixin,
+                     UserPermissionMixin, SuccessMessageMixin):
     '''Delete user.'''
     model: type[User] = User
     context_object_name: str = 'user'

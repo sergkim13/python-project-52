@@ -1,38 +1,38 @@
 from typing import Any, Callable
 
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import ProtectedError
-from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect
 from django.views.generic import DeleteView
 
 from .constants import MSG_NO_PERMISSION, REVERSE_HOME, REVERSE_LOGIN
 
 
-class AuthentificationPermissionMixin(LoginRequiredMixin):
+class AuthRequiredMixin(LoginRequiredMixin):
     '''Sets access rules for unauthenticated users.'''
 
-    def handle_no_permission(self) -> HttpResponseRedirect:
-        '''Sets rules when a page is unavailable to an unauthenticated user.'''
-        messages.warning(self.request, MSG_NO_PERMISSION)
-        return redirect(REVERSE_LOGIN)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            messages.error(request, MSG_NO_PERMISSION)
+            return redirect(REVERSE_LOGIN)
+
+        return super().dispatch(request, *args, **kwargs)
 
 
-class ModifyPermissionMixin(LoginRequiredMixin):
+class UserPermissionMixin(UserPassesTestMixin):
     '''Sets access rules for an unauthorized user.'''
 
     unpermission_message: str = 'Access denied message'
     unpermission_url: str | Callable[..., Any] = REVERSE_LOGIN
 
-    def dispatch(self, request: HttpRequest,
-                 *args: Any, **kwargs: Any) -> HttpResponse:
-        '''Specifies access settings for the current user.
-        Provides access if the user is authenticated.'''
-        if request.user.id != self.get_object().id:
-            messages.error(self.request, self.unpermission_message)
-            return redirect(self.unpermission_url)
-        return super().dispatch(request, *args, **kwargs)
+    def test_func(self):
+        return self.get_object() == self.request.user
+
+    def handle_no_permission(self):
+        messages.error(self.request, self.unpermission_message)
+        return redirect(self.unpermission_url)
 
 
 class DeletionProtectionMixin(DeleteView):
@@ -51,14 +51,13 @@ class DeletionProtectionMixin(DeleteView):
             return redirect(self.protected_data_url)
 
 
-class TaskDeletionPermissionMixin(LoginRequiredMixin):
+class AuthorDeletionPermissionMixin(UserPassesTestMixin):
     unpermission_message: str = 'Task deletion forbidden message'
     unpermission_url: str = 'redirected_url'
 
-    def dispatch(self, request, *args, **kwargs):
-        '''Provides access for task deletion if the user is task's author.'''
-        if request.user.id != self.get_object().author.id:
-            if request.user.is_authenticated:
-                messages.error(self.request, self.unpermission_message)
-            return redirect(self.unpermission_url)
-        return super().dispatch(request, *args, **kwargs)
+    def test_func(self):
+        return self.get_object().author == self.request.user
+
+    def handle_no_permission(self):
+        messages.error(self.request, self.unpermission_message)
+        return redirect(self.unpermission_url)
