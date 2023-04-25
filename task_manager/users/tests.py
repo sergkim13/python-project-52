@@ -23,7 +23,6 @@ class TestUsers(TestCase):
 
     def setUp(self):
         '''Fixtures setup for tests.'''
-        self.fixture_users = User.objects.all()
         self.fixture_user_1 = User.objects.get(id=1)
         self.fixture_user_2 = User.objects.get(id=2)
         self.fixture_user_3 = User.objects.get(id=3)
