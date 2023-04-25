@@ -1,11 +1,23 @@
 from typing import Any, Callable
+
 from django.contrib.messages.views import SuccessMessageMixin
 from django.forms import BaseForm
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
-from .forms import StatusForm
-from .constants import CONTEXT_CREATE, CONTEXT_DELETE, CONTEXT_LIST, CONTEXT_UPDATE, MSG_CREATED, MSG_DELETED, MSG_UPDATED, REVERSE_STATUSES, STATUS_USED_IN_TASK
-from .models import Status
+
 from ..mixins import AuthentificationPermissionMixin, DeletionProtectionMixin
+from .constants import (
+    CONTEXT_CREATE,
+    CONTEXT_DELETE,
+    CONTEXT_LIST,
+    CONTEXT_UPDATE,
+    MSG_CREATED,
+    MSG_DELETED,
+    MSG_UPDATED,
+    REVERSE_STATUSES,
+    STATUS_USED_IN_TASK,
+)
+from .forms import StatusForm
+from .models import Status
 
 
 class StatusListView(AuthentificationPermissionMixin, ListView):

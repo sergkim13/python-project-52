@@ -1,6 +1,5 @@
 from typing import Any, Callable
 
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.forms import BaseForm
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView

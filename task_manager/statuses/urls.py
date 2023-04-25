@@ -1,7 +1,7 @@
 from django.urls import URLPattern, path
 
-from .constants import LIST_STATUSES, CREATE_STATUS, UPDATE_STATUS, DELETE_STATUS
-from .views import StatusListView, StatusCreateView, StatusUpdateView, StatusDeleteView
+from .constants import CREATE_STATUS, DELETE_STATUS, LIST_STATUSES, UPDATE_STATUS
+from .views import StatusCreateView, StatusDeleteView, StatusListView, StatusUpdateView
 
 urlpatterns: list[URLPattern] = [
     path('', StatusListView.as_view(), name=LIST_STATUSES),

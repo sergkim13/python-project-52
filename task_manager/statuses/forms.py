@@ -1,12 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from .constants import (
-    STATUS_NAME,
-    STATUS_NAME_HELP_TEXT,
-    NAME,
-
-)
+from .constants import NAME, STATUS_NAME, STATUS_NAME_HELP_TEXT
 from .models import Status
 
 
