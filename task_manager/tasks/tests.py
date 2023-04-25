@@ -1,5 +1,6 @@
 from http import HTTPStatus
 
+from django.contrib.messages import get_messages
 from django.test import TestCase
 from django.urls import reverse_lazy
 
@@ -7,6 +8,7 @@ from task_manager.constants import REVERSE_LOGIN
 from task_manager.tasks.constants import (
     DELETE_TASK,
     DETAIL_TASK,
+    MSG_NOT_AUTHOR_FOR_DELETE_TASK,
     REVERSE_CREATE,
     REVERSE_TASKS,
     TEMPLATE_CREATE,
@@ -157,7 +159,7 @@ class TestTask(TestCase):
             Task.objects.get(id=self.fixture_task_1.id)
 
     def test_task_delete_another_user_task(self):
-        '''Tests for task's delete.'''
+        '''Tests for task's delete by not author'''
         URL_PATH = reverse_lazy(DELETE_TASK, kwargs={'pk': self.fixture_task_2.id})
 
         # GET response check without login
@@ -168,7 +170,13 @@ class TestTask(TestCase):
         self.client.force_login(self.fixture_user)
         response = self.client.get(URL_PATH)
         self.assertRedirects(response, REVERSE_TASKS, HTTPStatus.FOUND)
+        messages = list(get_messages(response.wsgi_request))
+        self.assertRedirects(response, REVERSE_TASKS, HTTPStatus.FOUND)
+        self.assertEqual(str(messages[0]), MSG_NOT_AUTHOR_FOR_DELETE_TASK)
 
         # POST response check
         response = self.client.post(URL_PATH)
         self.assertRedirects(response, REVERSE_TASKS, HTTPStatus.FOUND)
+        messages = list(get_messages(response.wsgi_request))
+        self.assertRedirects(response, REVERSE_TASKS, HTTPStatus.FOUND)
+        self.assertEqual(str(messages[0]), MSG_NOT_AUTHOR_FOR_DELETE_TASK)
