@@ -2,12 +2,13 @@ from http import HTTPStatus
 
 from django.test import TestCase
 from django.urls import reverse_lazy
-
+from django.contrib.messages import get_messages
 from task_manager.constants import REVERSE_LOGIN
 from task_manager.statuses.constants import (
     DELETE_STATUS,
     REVERSE_CREATE,
     REVERSE_STATUSES,
+    STATUS_USED_IN_TASK,
     TEMPLATE_CREATE,
     TEMPLATE_DELETE,
     TEMPLATE_LIST,
@@ -105,7 +106,26 @@ class TestStatus(TestCase):
         self.assertTemplateUsed(response, TEMPLATE_DELETE)
 
         # POST response check
-        post_response = self.client.post(URL_PATH)
-        self.assertRedirects(post_response, REVERSE_STATUSES, HTTPStatus.FOUND)
+        response = self.client.post(URL_PATH)
+        self.assertRedirects(response, REVERSE_STATUSES, HTTPStatus.FOUND)
         with self.assertRaises(Status.DoesNotExist):
             Status.objects.get(id=self.fixture_status_1.id)
+
+
+class TestStatusRelations(TestCase):
+    '''`Status` test cases with related `Task`'''
+    fixtures = ['users.json', 'statuses.json', 'tasks.json']
+
+    def setUp(self):
+        '''Fixtures setup for tests.'''
+        self.fixture_user = User.objects.get(id=1)
+        self.fixture_status_1 = Status.objects.get(id=1)
+
+    def test_status_with_task_delete(self):
+        '''Tests for status's delete which used in task.'''
+        URL_PATH = reverse_lazy(DELETE_STATUS, kwargs={'pk': self.fixture_status_1.id})
+        self.client.force_login(self.fixture_user)
+        response = self.client.post(URL_PATH)
+        messages = list(get_messages(response.wsgi_request))
+        self.assertRedirects(response, REVERSE_STATUSES, HTTPStatus.FOUND)
+        self.assertEqual(str(messages[0]), STATUS_USED_IN_TASK)
