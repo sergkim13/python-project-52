@@ -1,0 +1,38 @@
+[
+    {
+      "model": "tasks.task",
+      "pk": 1,
+      "fields": {
+        "name": "Read book",
+        "status": 1,
+        "description": "Read new book.",
+        "author": 1,
+        "executor": 2,
+        "created_at": "2023-04-22T09:00:00.538Z"
+      }
+    },
+    {
+      "model": "tasks.task",
+      "pk": 2,
+      "fields": {
+        "name": "Take walk",
+        "status": 1,
+        "description": "Take a walk after breakfast for one hour.",
+        "author": 2,
+        "executor": 1,
+        "created_at": "2023-04-23T11:00:00.154Z"
+      }
+    },
+    {
+      "model": "tasks.task",
+      "pk": 3,
+      "fields": {
+        "name": "Call friend",
+        "status": 1,
+        "description": "Call Vasya.",
+        "author": 3,
+        "executor": 3,
+        "created_at": "2023-04-23T17:00:00.545Z"
+      }
+    }
+]

@@ -51,13 +51,14 @@ class DeletionProtectionMixin(DeleteView):
             return redirect(self.protected_data_url)
 
 
-class TaskDeletionPermissionMixin(PermissionRequiredMixin):
+class TaskDeletionPermissionMixin(LoginRequiredMixin):
     unpermission_message: str = 'Task deletion forbidden message'
     unpermission_url: str = 'redirected_url'
 
-    def has_permission(self):
-        return self.get_object().author == self.request.user
-
-    def handle_no_permission(self):
-        messages.error(self.request, self.unpermission_message)
-        return redirect(self.unpermission_url)
+    def dispatch(self, request, *args, **kwargs):
+        '''Provides access for task deletion if the user is task's author.'''
+        if request.user.id != self.get_object().author.id:
+            if request.user.is_authenticated:
+                messages.error(self.request, self.unpermission_message)
+            return redirect(self.unpermission_url)
+        return super().dispatch(request, *args, **kwargs)

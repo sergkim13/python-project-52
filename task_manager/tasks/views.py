@@ -63,7 +63,7 @@ class TaskUpdateView(AuthentificationPermissionMixin, SuccessMessageMixin, Updat
     success_message: str = MSG_UPDATED
 
 
-class TaskDeleteView(TaskDeletionPermissionMixin, AuthentificationPermissionMixin, SuccessMessageMixin, DeleteView):
+class TaskDeleteView(AuthentificationPermissionMixin, TaskDeletionPermissionMixin, SuccessMessageMixin, DeleteView):
     '''Delete tasks.'''
     model: type[Task] = Task
     context_object_name: str = 'task'

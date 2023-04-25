@@ -20,7 +20,7 @@ REVERSE_CREATE: Final = reverse_lazy(CREATE_TASK)
 
 # Templates
 # All are default!
-TEMPLATE_LIST: Final[str] = 'tasks/task_filter.html'
+TEMPLATE_LIST: Final[str] = 'tasks/task_list.html'
 TEMPLATE_CREATE: Final[str] = 'tasks/task_form.html'
 TEMPLATE_UPDATE: Final[str] = 'tasks/task_form.html'
 TEMPLATE_DELETE: Final[str] = 'tasks/task_confirm_delete.html'
