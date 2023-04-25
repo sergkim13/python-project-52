@@ -4,7 +4,7 @@ from .models import Status
 
 
 @admin.register(Status)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created_at')
-    search_fields = ('name', 'created_at')
+class StatusAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'created_at')
+    search_fields = ('name',)
     list_filter = (('created_at'),)

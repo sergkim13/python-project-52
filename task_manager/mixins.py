@@ -1,7 +1,7 @@
 from typing import Any, Callable
 
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import ProtectedError
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect
@@ -14,7 +14,7 @@ class AuthentificationPermissionMixin(LoginRequiredMixin):
     '''Sets access rules for unauthenticated users.'''
 
     def handle_no_permission(self) -> HttpResponseRedirect:
-        '''Sets rules when a page is unavailable to an unauthorized user.'''
+        '''Sets rules when a page is unavailable to an unauthenticated user.'''
         messages.warning(self.request, MSG_NO_PERMISSION)
         return redirect(REVERSE_LOGIN)
 
@@ -49,3 +49,15 @@ class DeletionProtectionMixin(DeleteView):
         except ProtectedError:
             messages.error(self.request, self.protected_data_message)
             return redirect(self.protected_data_url)
+
+
+class TaskDeletionPermissionMixin(PermissionRequiredMixin):
+    unpermission_message: str = 'Task deletion forbidden message'
+    unpermission_url: str = 'redirected_url'
+
+    def has_permission(self):
+        return self.get_object().author == self.request.user
+
+    def handle_no_permission(self):
+        messages.error(self.request, self.unpermission_message)
+        return redirect(self.unpermission_url)

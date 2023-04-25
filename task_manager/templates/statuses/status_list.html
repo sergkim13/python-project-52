@@ -27,8 +27,7 @@
                 <tr>
                     <th scope="row">{{ status.id }}</th>
                     <td>{{ status.name }}</td>
-                    <td>{{ status.date_created|date:"d.m.Y" }}</td>
-                    <td>{{ status.date_modified|date:"d.m.Y" }}</td>
+                    <td>{{ status.created_at|date:"d.m.Y H:i" }}</td>
                     <td>
                         <a class="btn btn-info btn-sm mr-2" href="{% url 'status_update' status.id %}">
                             {% translate "Update" %}</button>
