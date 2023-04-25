@@ -6,9 +6,10 @@ from django.views.generic import (
     CreateView,
     DeleteView,
     DetailView,
-    ListView,
     UpdateView,
 )
+
+from task_manager.tasks.filters import TasksFilter
 
 from ..mixins import AuthorDeletionPermissionMixin, AuthRequiredMixin
 from .constants import (
@@ -25,6 +26,7 @@ from .constants import (
 )
 from .forms import TaskForm
 from .models import Task
+from django_filters.views import FilterView
 
 
 class TaskDetailView(AuthRequiredMixin, DetailView):
@@ -33,11 +35,12 @@ class TaskDetailView(AuthRequiredMixin, DetailView):
     extra_context: dict = CONTEXT_DETAIL
 
 
-class TaskListView(AuthRequiredMixin, ListView):
+class TaskListView(AuthRequiredMixin, FilterView):
     '''Show the list of tasks.'''
     model: type[Task] = Task
     context_object_name: str = 'tasks'
     extra_context: dict = CONTEXT_LIST
+    filterset_class: type[TasksFilter] = TasksFilter
 
 
 class TaskCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):

@@ -7,6 +7,15 @@
 
 {% block content %}
 <h1 class="my-4">{{ page_h1 }}</h1>
+<div class="card mb-3">
+    <div class="card-body bg-light">
+        <form class="form-inline center my-auto" method="get">
+            {% bootstrap_form filter.form form_group_class="form-group" field_class="ml-2 mr-3" %}
+            <div><br><br></div>
+            <button class="btn btn-primary">{{ button_text }}</button>
+        </form>
+    </div>
+</div>
 <table class="table">
     <div class="container">
         <div class="row mb-4">
