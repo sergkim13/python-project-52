@@ -3,6 +3,7 @@ from http import HTTPStatus
 from django.test import TestCase
 from django.urls import reverse_lazy
 
+from task_manager.constants import REVERSE_LOGIN
 from task_manager.statuses.constants import (
     DELETE_STATUS,
     REVERSE_CREATE,
@@ -13,7 +14,6 @@ from task_manager.statuses.constants import (
     TEMPLATE_UPDATE,
     UPDATE_STATUS,
 )
-from task_manager.constants import REVERSE_LOGIN, MSG_NO_PERMISSION
 from task_manager.statuses.models import Status
 from task_manager.users.models import User
 
@@ -91,7 +91,7 @@ class TestStatus(TestCase):
         self.assertRedirects(response, REVERSE_STATUSES)
         self.assertEqual(updated_status.name, self.update_status_data['name'])
 
-    def test_status_user(self):
+    def test_status_delete(self):
         '''Tests for status's delete.'''
         URL_PATH = reverse_lazy(DELETE_STATUS, kwargs={'pk': self.fixture_status_1.id})
 

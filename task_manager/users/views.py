@@ -4,6 +4,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.forms import BaseForm
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
+from task_manager.constants import REVERSE_LOGIN
+
 from ..mixins import DeletionProtectionMixin, ModifyPermissionMixin
 from .constants import (
     CONTEXT_CREATE,
@@ -17,7 +19,6 @@ from .constants import (
     REVERSE_USERS,
     USER_USED_IN_TASK,
 )
-from task_manager.constants import REVERSE_LOGIN
 from .forms import UserForm
 from .models import User
 

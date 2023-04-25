@@ -5,7 +5,6 @@ from typing import Final
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy
 
-
 # Route names
 LIST_STATUSES: Final[str] = 'statuses'
 CREATE_STATUS: Final[str] = 'status_create'
