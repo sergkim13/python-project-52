@@ -80,9 +80,9 @@ class TestStatus(TestCase):
 
         # GET response check with login
         self.client.force_login(self.fixture_user)
-        get_reponse_with_login = self.client.get(URL_PATH)
-        self.assertEqual(get_reponse_with_login.status_code, HTTPStatus.OK)
-        self.assertTemplateUsed(get_reponse_with_login, TEMPLATE_UPDATE)
+        response = self.client.get(URL_PATH)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertTemplateUsed(response, TEMPLATE_UPDATE)
 
         # POST response check
         response = self.client.post(URL_PATH, data=self.update_status_data)
