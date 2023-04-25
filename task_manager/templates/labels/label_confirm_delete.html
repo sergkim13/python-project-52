@@ -11,7 +11,7 @@
             <h1 class="my-4">{{ page_h1 }}</h1>
             <form method="post">
                 {% csrf_token %}
-                <p>{% translate "Are you sure you want to delete task" %} №{{ task.id }} "{{ task.name }}"?</p><br>
+                <p>{% translate "Are you sure you want to delete" %} "{{ label.name }}"?</p><br>
                 <input type="submit" class="btn btn-lg btn-danger" value='{% translate "Yes, delete" %}'>
                 <a class="btn btn-lg btn-primary" href="#" onclick="history.go(-1)">{% translate "No, stay and go back" %}</a>
             </form>

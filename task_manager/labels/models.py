@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy
 
 
-class Label(models.Model)
+class Label(models.Model):
     name = models.CharField(max_length=256, unique=True, blank=False, verbose_name=gettext_lazy('name'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=gettext_lazy('created_at'))
 
