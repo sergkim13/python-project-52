@@ -13,6 +13,7 @@ test:
 test-cov:
 	poetry run coverage run manage.py test ./tests/
 	poetry run coverage report
+	poetry run coverage xml
 
 compose:
 	docker compose up -d
