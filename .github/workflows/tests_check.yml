@@ -1,4 +1,4 @@
-name: run tests
+name: tests check
 
 on:
   - push
@@ -20,6 +20,7 @@ jobs:
 
       - name: Run tests
         env:
+          DEBUG: 'True'
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
         run: |
           make test
@@ -27,8 +28,8 @@ jobs:
       - name: Run code coverage
         uses: paambaati/codeclimate-action@v3.2.0
         env:
+          DEBUG: 'True'
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
         with:
           coverageCommand: make test-cov
-          debug: true
