@@ -16,7 +16,8 @@ class Task(models.Model):
                                related_name='author_id')
     labels = models.ManyToManyField(Label, through='TaskLabel', through_fields=('task', 'label'),
                                     blank=True, verbose_name=gettext_lazy('labels'))
-    executor = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name=gettext_lazy('executor'),
+    executor = models.ForeignKey(User, on_delete=models.PROTECT,
+                                 verbose_name=gettext_lazy('executor'),
                                  related_name='executor_id', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=gettext_lazy('created_at'))
 
