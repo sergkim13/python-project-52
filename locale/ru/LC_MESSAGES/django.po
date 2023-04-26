@@ -358,7 +358,7 @@ msgstr "Нет, вернуться назад"
 
 #: task_manager/templates/labels/label_list.html:20
 msgid "Label name"
-msgstr "Название метки"
+msgstr "Имя"
 
 #: task_manager/templates/labels/label_list.html:21
 #: task_manager/templates/statuses/status_list.html:21
@@ -414,7 +414,7 @@ msgstr "Войти"
 
 #: task_manager/templates/statuses/status_list.html:20
 msgid "Status name"
-msgstr "Название статуса"
+msgstr "Имя"
 
 #: task_manager/templates/statuses/status_list.html:43
 msgid "No statuses"
@@ -449,7 +449,7 @@ msgstr "Описание"
 
 #: task_manager/templates/tasks/task_filter.html:29
 msgid "Task name"
-msgstr "Название задачи"
+msgstr "Имя"
 
 #: task_manager/templates/tasks/task_filter.html:62
 msgid "No tasks"
@@ -457,7 +457,7 @@ msgstr "Нет задач"
 
 #: task_manager/templates/users/user_list.html:15
 msgid "Username"
-msgstr "Пользователь"
+msgstr "Имя пользователя"
 
 #: task_manager/templates/users/user_list.html:16
 msgid "Full name"
