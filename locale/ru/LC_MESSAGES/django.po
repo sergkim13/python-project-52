@@ -185,15 +185,15 @@ msgstr "Удаление статуса"
 
 #: task_manager/statuses/constants.py:54
 msgid "Status created successfully"
-msgstr ""
+msgstr "Статус успешно создан"
 
 #: task_manager/statuses/constants.py:55
 msgid "Status changed successfully"
-msgstr "Статус успешно создан"
+msgstr "Статус успешно изменён"
 
 #: task_manager/statuses/constants.py:56
 msgid "Status deleted successfully"
-msgstr "Статус успешно изменён"
+msgstr "Статус успешно удалён"
 
 #: task_manager/statuses/constants.py:57
 msgid "Can't delete status because it's in use"

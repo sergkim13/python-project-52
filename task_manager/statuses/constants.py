@@ -60,8 +60,6 @@ STATUS_USED_IN_TASK: str = gettext_lazy('Can\'t delete status because it\'s in u
 # Forms
 # Fields
 NAME: Final[str] = 'name'
-STATUS_NAME: Final[str] = 'status name'
-STATUS_NAME_HELP_TEXT: Final[str] = 'Required. Please enter a status name.'
 
 
 # Buttons
