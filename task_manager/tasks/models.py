@@ -8,8 +8,10 @@ from task_manager.users.models import User
 
 class Task(models.Model):
     name = models.CharField(max_length=256, unique=True, verbose_name=gettext_lazy('name'))
-    description = models.TextField(max_length=5000, blank=True, verbose_name=gettext_lazy('description'))
-    status = models.ForeignKey(Status, on_delete=models.PROTECT, verbose_name=gettext_lazy('status'))
+    description = models.TextField(max_length=5000, blank=True,
+                                   verbose_name=gettext_lazy('description'))
+    status = models.ForeignKey(Status, on_delete=models.PROTECT,
+                               verbose_name=gettext_lazy('status'))
     author = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name=gettext_lazy('author'),
                                related_name='author_id')
     labels = models.ManyToManyField(Label, through='TaskLabel', through_fields=('task', 'label'),

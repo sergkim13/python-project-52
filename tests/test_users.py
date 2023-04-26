@@ -112,7 +112,8 @@ class TestUser(TestCase):
         # Invalid POST reponse check: firstname is too long
         response = self.client.post(REVERSE_CREATE, data=self.invalid_user_data_3)
         self.assertIn('first_name', response.context['form'].errors)
-        self.assertContains(response, 'Убедитесь, что это значение содержит не более 150 символов (сейчас 200).')
+        self.assertContains(
+            response, 'Убедитесь, что это значение содержит не более 150 символов (сейчас 200).')
 
         # Invalid POST reponse check: passwords do not match
         response = self.client.post(REVERSE_CREATE, data=self.invalid_user_data_4)
