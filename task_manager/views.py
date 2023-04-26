@@ -1,14 +1,9 @@
-from django import forms
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import TemplateView
 
 from .constants import HOME, MSG_LOGIN, MSG_LOGOUT, TEMPLATE_INDEX
-
-
-class NameForm(forms.Form):
-    your_name = forms.CharField(label='name')
 
 
 class IndexView(TemplateView):
