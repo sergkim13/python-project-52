@@ -19,8 +19,10 @@ from task_manager.labels.constants import (
 from task_manager.labels.models import Label
 from task_manager.tasks.models import Task
 from task_manager.users.models import User
+from task_manager.utils import disable_rollbar
 
 
+@disable_rollbar()
 class TestLabel(TestCase):
     '''`Label` CRUD test cases.'''
     fixtures = ['users.json', 'labels.json']
@@ -114,6 +116,7 @@ class TestLabel(TestCase):
             Label.objects.get(id=self.fixture_label_1.id)
 
 
+@disable_rollbar()
 class TestLabelRelations(TestCase):
     '''`Label` test cases with related `Task`'''
     fixtures = ['users.json', 'labels.json', 'statuses.json', 'tasks.json']

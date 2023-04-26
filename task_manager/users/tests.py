@@ -17,8 +17,10 @@ from task_manager.users.constants import (
     USER_USED_IN_TASK,
 )
 from task_manager.users.models import User
+from task_manager.utils import disable_rollbar
 
 
+@disable_rollbar()
 class TestUser(TestCase):
     '''`User` CRUD test cases.'''
     fixtures = ['users.json']
@@ -188,6 +190,7 @@ class TestUser(TestCase):
         self.assertRedirects(response, REVERSE_USERS, HTTPStatus.FOUND)
 
 
+@disable_rollbar()
 class TestUserRelations(TestCase):
     '''`User` test cases with related `Task`'''
     fixtures = ['users.json', 'statuses.json', 'tasks.json']

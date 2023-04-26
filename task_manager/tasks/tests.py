@@ -20,8 +20,10 @@ from task_manager.tasks.constants import (
 )
 from task_manager.tasks.models import Task
 from task_manager.users.models import User
+from task_manager.utils import disable_rollbar
 
 
+@disable_rollbar()
 class TestTask(TestCase):
     '''`Task` CRUD test cases.'''
     fixtures = ['users.json', 'statuses.json', 'tasks.json']

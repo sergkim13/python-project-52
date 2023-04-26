@@ -18,8 +18,10 @@ from task_manager.statuses.constants import (
 )
 from task_manager.statuses.models import Status
 from task_manager.users.models import User
+from task_manager.utils import disable_rollbar
 
 
+@disable_rollbar()
 class TestStatus(TestCase):
     '''`Status` CRUD test cases.'''
     fixtures = ['users.json', 'statuses.json']
@@ -113,6 +115,7 @@ class TestStatus(TestCase):
             Status.objects.get(id=self.fixture_status_1.id)
 
 
+@disable_rollbar()
 class TestStatusRelations(TestCase):
     '''`Status` test cases with related `Task`'''
     fixtures = ['users.json', 'statuses.json', 'tasks.json']

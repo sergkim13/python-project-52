@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  task_manager:
+    container_name: task_manager
+    env_file:
+      - .env
+    environment:
+      DEBUG: 'True'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: >
+      sh -c "
+        echo 'Lauching tests...' &&
+        python manage.py test
+      "
