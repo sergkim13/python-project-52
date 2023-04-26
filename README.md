@@ -1,6 +1,7 @@
 # Task manager
 
 [![Actions Status](https://github.com/sergkim13/python-project-52/workflows/hexlet-check/badge.svg)](https://github.com/sergkim13/python-project-52/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/fce77e785df35408d49f/maintainability)](https://codeclimate.com/github/sergkim13/python-project-52/maintainability)
 
 
 ### Description:
@@ -16,3 +17,15 @@ Deployed on Railway:https://python-project-52-production-6a60.up.railway.app/
 | Statuses     | You can add, update, delete statuses of the tasks, if you are logged in. The statuses which correspond with any tasks cannot be deleted.                                  |
 | Labels       | You can add, update, delete labels of the tasks, if you are logged in. The label which correspond with any tasks cannot be deleted.                                       |
 | Tasks        | You can add, update, delete tasks, if you are logged in. You can also filter tasks on the relevant page with given statuses, exetutors and labels.
+___
+### Requirements:
+1. MacOS (prefer) / Linux / Windows10
+2. `Docker`
+3. `Make` utily for MacOS, Linux.
+
+### Install:
+1. Clone repository: https://github.com/sergkim13/python-project-52
+2. Create `.env` and fill it up according to `.env.example`.
+3. Type `make install` (`Poetry`) or `pip install -r requirements.txt`  to install dependencies to your virtual environment.
+4. Type `make compose` for running application in docker container. Type `make stop` to stop app container.
+5. Type `make compose-test` for running tests in docker container. Type `make stop-test` to stop test container.

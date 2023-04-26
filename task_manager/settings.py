@@ -161,10 +161,13 @@ LOCALE_PATHS = (
     './locale/',
 )
 
-FIXTURE_DIRS = ('task_manager/fixtures/',)
+FIXTURE_DIRS = ('tests/fixtures/',)
 
 ROLLBAR = {
     'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
     'environment': 'development' if DEBUG else 'production',
     'root': BASE_DIR,
 }
+
+TEST_DISCOVER_PATTERN = 'test_*.py'
+TEST_DISCOVER_TOP_LEVEL = os.path.join(BASE_DIR, 'tests')

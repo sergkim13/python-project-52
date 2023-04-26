@@ -7,6 +7,10 @@ hooks:
 test:
 	poetry run python manage.py test
 
+test-cov:
+	poetry run coverage run manage.py test ./tests/
+	poetry run coverage report
+
 compose:
 	docker compose up -d
 
