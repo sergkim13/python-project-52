@@ -2,7 +2,7 @@ from typing import Any, Callable
 
 from django.contrib.messages.views import SuccessMessageMixin
 from django.forms import BaseForm
-from django.views.generic import CreateView, ListView, UpdateView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from ..mixins import AuthRequiredMixin, DeletionProtectionMixin
 from .constants import (
@@ -45,7 +45,8 @@ class StatusUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message: str = MSG_UPDATED
 
 
-class StatusDeleteView(AuthRequiredMixin, DeletionProtectionMixin, SuccessMessageMixin):
+class StatusDeleteView(AuthRequiredMixin, DeletionProtectionMixin,
+                       SuccessMessageMixin, DeleteView):
     '''Delete status.'''
     model: type[Status] = Status
     context_object_name: str = 'status'

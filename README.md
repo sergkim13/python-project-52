@@ -3,6 +3,8 @@
 [![Actions Status](https://github.com/sergkim13/python-project-52/workflows/hexlet-check/badge.svg)](https://github.com/sergkim13/python-project-52/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/fce77e785df35408d49f/maintainability)](https://codeclimate.com/github/sergkim13/python-project-52/maintainability)
 [![Linters check](https://github.com/sergkim13/python-project-52/actions/workflows/linters_check.yml/badge.svg)](https://github.com/sergkim13/python-project-52/actions/workflows/linters_check.yml)
+[![Tests check](https://github.com/sergkim13/python-project-52/actions/workflows/tests_check.yml/badge.svg)](https://github.com/sergkim13/python-project-52/actions/workflows/tests_check.yml)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/fce77e785df35408d49f/test_coverage)](https://codeclimate.com/github/sergkim13/python-project-52/test_coverage)
 
 ### Description:
 A task management web application built with Python, Django, Bootstrap and PostgreSQL. It allows you to set tasks, assign performers and change their statuses. Registration and authentication are required to work with the system.

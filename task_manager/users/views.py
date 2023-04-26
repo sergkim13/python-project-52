@@ -2,7 +2,7 @@ from typing import Any, Callable
 
 from django.contrib.messages.views import SuccessMessageMixin
 from django.forms import BaseForm
-from django.views.generic import CreateView, ListView, UpdateView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from task_manager.constants import REVERSE_LOGIN
 
@@ -52,7 +52,7 @@ class UserUpdateView(AuthRequiredMixin, UserPermissionMixin,
 
 
 class UserDeleteView(AuthRequiredMixin, UserPermissionMixin,
-                     DeletionProtectionMixin, SuccessMessageMixin):
+                     DeletionProtectionMixin, SuccessMessageMixin, DeleteView):
     '''Delete user.'''
     model: type[User] = User
     context_object_name: str = 'user'
