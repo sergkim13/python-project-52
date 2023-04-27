@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-26 11:02+0300\n"
+"POT-Creation-Date: 2023-04-27 13:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,9 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
 #: task_manager/constants.py:21
 msgid "You are logged in"
 msgstr "Вы залогинены"
@@ -94,12 +95,12 @@ msgstr "Метка успешно удалена"
 msgid "Can't delete label because it's in use"
 msgstr "Невозможно удалить метку, потому что она используется"
 
-#: task_manager/labels/constants.py:67 task_manager/statuses/constants.py:68
+#: task_manager/labels/constants.py:67 task_manager/statuses/constants.py:66
 #: task_manager/tasks/constants.py:78
 msgid "Create"
 msgstr "Создать"
 
-#: task_manager/labels/constants.py:68 task_manager/statuses/constants.py:69
+#: task_manager/labels/constants.py:68 task_manager/statuses/constants.py:67
 #: task_manager/tasks/constants.py:79
 #: task_manager/templates/labels/label_list.html:33
 #: task_manager/templates/statuses/status_list.html:33
@@ -109,7 +110,7 @@ msgstr "Создать"
 msgid "Update"
 msgstr "Изменить"
 
-#: task_manager/labels/constants.py:69 task_manager/statuses/constants.py:70
+#: task_manager/labels/constants.py:69 task_manager/statuses/constants.py:68
 #: task_manager/tasks/constants.py:80
 #: task_manager/templates/labels/label_confirm_delete.html:15
 #: task_manager/templates/statuses/status_confirm_delete.html:15
@@ -119,21 +120,21 @@ msgstr "Изменить"
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: task_manager/labels/models.py:6 task_manager/statuses/models.py:6
+#: task_manager/labels/models.py:7 task_manager/statuses/models.py:7
 #: task_manager/tasks/models.py:10
 msgid "name"
 msgstr "имя"
 
-#: task_manager/labels/models.py:7 task_manager/statuses/models.py:7
-#: task_manager/tasks/models.py:19
+#: task_manager/labels/models.py:8 task_manager/statuses/models.py:8
+#: task_manager/tasks/models.py:22
 msgid "created_at"
 msgstr "дата создания"
 
-#: task_manager/labels/models.py:10
+#: task_manager/labels/models.py:11
 msgid "label"
 msgstr "метка"
 
-#: task_manager/labels/models.py:11 task_manager/tasks/models.py:16
+#: task_manager/labels/models.py:12 task_manager/tasks/models.py:18
 msgid "labels"
 msgstr "метки"
 
@@ -199,11 +200,11 @@ msgstr "Статус успешно удалён"
 msgid "Can't delete status because it's in use"
 msgstr "Невозможно удалить статус, потому что он используется"
 
-#: task_manager/statuses/models.py:10 task_manager/tasks/models.py:12
+#: task_manager/statuses/models.py:11 task_manager/tasks/models.py:14
 msgid "status"
 msgstr "статус"
 
-#: task_manager/statuses/models.py:11
+#: task_manager/statuses/models.py:12
 msgid "statuses"
 msgstr "статусы"
 
@@ -289,23 +290,23 @@ msgstr "Метка"
 msgid "Current user tasks"
 msgstr "Только свои задачи"
 
-#: task_manager/tasks/models.py:11
+#: task_manager/tasks/models.py:12
 msgid "description"
 msgstr "описание"
 
-#: task_manager/tasks/models.py:13
+#: task_manager/tasks/models.py:15
 msgid "author"
 msgstr "автор"
 
-#: task_manager/tasks/models.py:17
+#: task_manager/tasks/models.py:20
 msgid "executor"
 msgstr "исполнитель"
 
-#: task_manager/tasks/models.py:22
+#: task_manager/tasks/models.py:25
 msgid "task"
 msgstr "задача"
 
-#: task_manager/tasks/models.py:23
+#: task_manager/tasks/models.py:26
 msgid "tasks"
 msgstr "задачи"
 
@@ -315,17 +316,6 @@ msgid "Task manager"
 msgstr "Менеджер задач"
 
 #: task_manager/templates/index.html:8
-msgid "Hexlet's greetings!"
-msgstr "Привет от Хекслета!"
-
-#: task_manager/templates/index.html:9
-msgid "Development course with practice"
-msgstr "Практические курсы по программированию"
-
-#: task_manager/templates/index.html:11
-msgid "Learn more"
-msgstr "Узнать больше"
-
 #: task_manager/templates/labels/label_confirm_delete.html:6
 #: task_manager/templates/labels/label_form.html:6
 #: task_manager/templates/labels/label_list.html:6
@@ -342,6 +332,14 @@ msgstr "Узнать больше"
 #: task_manager/templates/users/user_list.html:6
 msgid "Task Manager"
 msgstr "Менеджер задач"
+
+#: task_manager/templates/index.html:9
+msgid "User-friendly web application that offers a simple and flexible solution for managing your tasks."
+msgstr "Простое и гибкое веб-приложение для управления вашими задачами."
+
+#: task_manager/templates/index.html:11
+msgid "Get started"
+msgstr "Начать"
 
 #: task_manager/templates/labels/label_confirm_delete.html:14
 #: task_manager/templates/statuses/status_confirm_delete.html:14
@@ -546,3 +544,12 @@ msgstr "Зарегистрировать"
 #: task_manager/users/constants.py:81
 msgid "Save changes"
 msgstr "Изменить"
+
+#~ msgid "Hexlet's greetings!"
+#~ msgstr "Привет от Хекслета!"
+
+#~ msgid "Development course with practice"
+#~ msgstr "Практические курсы по программированию"
+
+#~ msgid "Learn more"
+#~ msgstr "Узнать больше"
