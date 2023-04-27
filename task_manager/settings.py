@@ -34,6 +34,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = [
     'webserver',
     '.railway.app',
+    '.onrender.com',
     '0.0.0.0',
     '127.0.0.1',
 ]
