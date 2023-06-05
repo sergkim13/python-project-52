@@ -9,9 +9,12 @@
 ### Description:
 A task management web application built with Python, Django, Bootstrap and PostgreSQL. It allows you to set tasks, assign performers and change their statuses. Registration and authentication are required to work with the system.
 
-✅ Deployed on Railway: https://task-manager-production-65a0.up.railway.app/
-
 ✅ Deployd on Render: https://task-manager-tyin.onrender.com/
+
+
+<div id="header" align="center">
+  <img src="https://raw.githubusercontent.com/sergkim13/static/main/task_manager/task_manager.gif?token=GHSAT0AAAAAABZLD7VFXIZRZLJDJLEH7KGQZD5SY3A" width="800"/>
+</div>
 
 ### Usage:
 | Steps        | Description                                                                                                                                                               |
