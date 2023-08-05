@@ -1,6 +1,5 @@
 # Task manager
 
-[![Actions Status](https://github.com/sergkim13/python-project-52/workflows/hexlet-check/badge.svg)](https://github.com/sergkim13/python-project-52/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/fce77e785df35408d49f/maintainability)](https://codeclimate.com/github/sergkim13/python-project-52/maintainability)
 [![Linters check](https://github.com/sergkim13/python-project-52/actions/workflows/linters_check.yml/badge.svg)](https://github.com/sergkim13/python-project-52/actions/workflows/linters_check.yml)
 [![Tests check](https://github.com/sergkim13/python-project-52/actions/workflows/tests_check.yml/badge.svg)](https://github.com/sergkim13/python-project-52/actions/workflows/tests_check.yml)
