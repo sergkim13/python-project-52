@@ -9,7 +9,6 @@
 ### Description:
 A task management web application built with Python, Django, Bootstrap and PostgreSQL. It allows you to set tasks, assign performers and change their statuses. Registration and authentication are required to work with the system.
 
-✅ Deployd on Render: https://task-manager-tyin.onrender.com/
 
 
 <div id="header" align="left">
