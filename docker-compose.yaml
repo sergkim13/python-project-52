@@ -27,6 +27,8 @@ services:
     depends_on:
       app_db:
         condition: service_healthy
+    links:
+      - app_db:app_db
 
   app_db:
     container_name: app_db
